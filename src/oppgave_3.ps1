@@ -4,7 +4,6 @@ $webRequest = Invoke-WebRequest http://nav-deckofcards.herokuapp.com/shuffle
 $kortstokkJson = $webRequest.Content
 $kortstokk = ConvertFrom-Json -InputObject $kortstokkJson
 
-
 function kortstokkTilStreng {
     [OutputType([string])]
     param (
