@@ -1,4 +1,5 @@
 param(
     $Navn
 )
-"Hei $Navn"
+
+Write-Host "Hei $Navn" 
