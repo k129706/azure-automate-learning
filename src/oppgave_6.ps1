@@ -50,10 +50,10 @@ Write-Output "Poengsum: $(sumPoengKortstokk -kortstokk $kortstokk)"
 
 $meg = $kortstokk[0..1]
 #Write-Output $(kortstokk[0..1])
-$kortstokk = $kortstokk[2..$kortstokk.Count]
+$kortstokk = $kortstokk[2..($kortstokk.Count - 1)]
 Write-Output "meg: $(kortStokkTilStreng -kortstokk $meg)"
 
 $magnus = $kortstokk[0..1]
-$kortstokk = $kortstokk[2..$kortstokk.Count]
+$kortstokk = $kortstokk[2..($kortstokk.Count - 1)]
 Write-Output "magnus: $(kortStokkTilStreng -kortstokk $magnus)"
 Write-Output "Kortstokk: $(kortStokkTilStreng -kortstokk $kortstokk)"
