@@ -7,7 +7,6 @@ param (
 )
 
 $ErrorActionPreference = 'Stop'
-
 $webRequest = Invoke-WebRequest -Uri $UrlKortstokk
 
 #$webRequest = Invoke-WebRequest http://nav-deckofcards.herokuapp.com/shuffle
