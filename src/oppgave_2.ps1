@@ -1,1 +1,4 @@
-"Hei Erling"
+param(
+    $Navn
+)
+"Hei $Navn"
