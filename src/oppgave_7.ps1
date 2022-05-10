@@ -6,9 +6,9 @@ param (
 )
 
 $ErrorActionPreference = 'Stop'
-#$webRequest = Invoke-WebRequest -Uri $UrlKortstokk
+$webRequest = Invoke-WebRequest -Uri $UrlKortstokk
 
-$webRequest = Invoke-WebRequest http://nav-deckofcards.herokuapp.com/shuffle
+#$webRequest = Invoke-WebRequest http://nav-deckofcards.herokuapp.com/shuffle
 $kortstokkJson = $webRequest.Content
 $kortstokk = ConvertFrom-Json -InputObject $kortstokkJson
 
@@ -55,38 +55,35 @@ function skrivUtResultat {
         $kortStokkMeg        
     )
     Write-Output "Vinner: $vinner"
-    Write-Output "magnus | $(sumPoengKortstokk -kortstokk$kortStokkMagnus) | $(kortStokkTilStreng -kortstokk $kortStokkMagnus)"    
+    Write-Output "magnus | $(sumPoengKortstokk -kortstokk $kortStokkMagnus) | $(kortStokkTilStreng -kortstokk $kortStokkMagnus)"    
     Write-Output "meg    | $(sumPoengKortstokk -kortstokk $kortStokkMeg) | $(kortStokkTilStreng -kortstokk $kortStokkMeg)"
 }
+Write-Output "Kortstokk: $(kortStokkTilStreng -kortstokk $kortstokk)"
+Write-Output "Poengsum: $(sumPoengKortstokk -kortstokk $kortstokk)"
+Write-Output ""
 
 # bruker 'blackjack' som et begrep - er 21
 $blackjack = 21
 
 
 
-<# $meg = $kortstokk[0..1]
-Write-Output $(kortstokk[0..1])
+$meg = $kortstokk[0..1]
 $kortstokk = $kortstokk[2..($kortstokk.Count - 1)]
-Write-Output "meg: $(kortStokkTilStreng -kortstokk $meg)"
+
 
 $magnus = $kortstokk[0..1]
 $kortstokk = $kortstokk[2..($kortstokk.Count - 1)]
-Write-Output "magnus: $(kortStokkTilStreng -kortstokk $magnus)"
-Write-Output "Kortstokk: $(kortStokkTilStreng -kortstokk $kortstokk)"
- #>
 
-if ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
-    skrivUtResultat -vinner $meg -kortStokkMagnus $magnus -kortStokkMeg $meg
+
+if (((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack) -and ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack)){
+    skrivUtResultat -vinner "Draw" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
-elseif ((sumPoengKortstokk -kortstokk $magunx) -eq $blackjack) {
-    skrivUtResultat -vinner $magnus -kortStokkMagnus $magnux -kortStokkMeg $meg
+elseif ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
+    skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
-
-
-
-
-
-
-
+elseif ((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack) {
+    skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+}
