@@ -9,9 +9,9 @@ param (
 
 $ErrorActionPreference = 'Stop'
 
-#$webRequest = Invoke-WebRequest -Uri $UrlKortstokk
+$webRequest = Invoke-WebRequest -Uri $UrlKortstokk
 
-$webRequest = Invoke-WebRequest http://nav-deckofcards.herokuapp.com/shuffle
+#$webRequest = Invoke-WebRequest http://nav-deckofcards.herokuapp.com/shuffle
 $kortstokkJson = $webRequest.Content
 $kortstokk = ConvertFrom-Json -InputObject $kortstokkJson
 
