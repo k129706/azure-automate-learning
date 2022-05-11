@@ -44,6 +44,7 @@ function sumPoengKortstokk {
     }
     return $poengKortstokk
 }
+Clear-Host
 Write-Output "Kortstokk: $(kortStokkTilStreng -kortstokk $kortstokk)"
 Write-Output "Poengsum: $(sumPoengKortstokk -kortstokk $kortstokk)"
 

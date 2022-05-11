@@ -16,4 +16,5 @@ function kortstokkTilStreng {
     }
     return $streng.Substring(0,$streng.Length-1)
 }
+Clear-Host
 Write-Output "Kortstokk: $(kortStokkTilStreng -kortstokk $kortstokk)"
