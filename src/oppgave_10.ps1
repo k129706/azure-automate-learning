@@ -103,3 +103,12 @@ if ((sumPoengKortstokk -kortstokk $magnus) -gt $blackjack) {
     skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
+
+if ((sumPoengKortstokk -kortstokk $magnus) -lt (sumPoengKortstokk -kortstokk $meg)) {
+    skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+} 
+else {
+    skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
+}
+
