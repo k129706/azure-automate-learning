@@ -94,6 +94,10 @@ while (((sumPoengKortstokk -kortstokk $meg) -lt 17)){
     $kortstokk = $kortstokk[1..($kortstokk.Count - 1)]
 }
 
+if ((sumPoengKortstokk -kortstokk $meg) -gt $blackjack) {
+    skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+}
 while (((sumPoengKortstokk -kortstokk $magnus) -le (sumPoengKortstokk -kortstokk $meg))){
     $magnus += $kortstokk[0]
     $kortstokk = $kortstokk[1..($kortstokk.Count - 1)]
