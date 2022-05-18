@@ -66,15 +66,11 @@ Write-Output ""
 # bruker 'blackjack' som et begrep - er 21
 $blackjack = 21
 
-
-
 $meg = $kortstokk[0..1]
 $kortstokk = $kortstokk[2..($kortstokk.Count - 1)]
 
-
 $magnus = $kortstokk[0..1]
 $kortstokk = $kortstokk[2..($kortstokk.Count - 1)]
-
 
 if (((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack) -and ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack)){
     skrivUtResultat -vinner "Draw" -kortStokkMagnus $magnus -kortStokkMeg $meg
@@ -95,7 +91,7 @@ while (((sumPoengKortstokk -kortstokk $meg) -lt 17)){
 }
 
 if ((sumPoengKortstokk -kortstokk $meg) -gt $blackjack) {
-    skrivUtResultat -vinner "magnux" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
 
