@@ -1,6 +1,9 @@
 name: oppgave 15
-on: [push, workflow_dispatch]
-
+#on: [push, workflow_dispatch]
+on:
+    push:
+      paths:
+        .github/workflows/oppgave_15.yml
 jobs:
   job1:
     defaults:
