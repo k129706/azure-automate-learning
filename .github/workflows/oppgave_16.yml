@@ -1,0 +1,25 @@
+name: oppgave 16
+#on: [push, workflow_dispatch]
+on:
+    push:
+      paths:
+        .github/workflows/oppgave_16.yml
+    workflow_dispatch:
+jobs:
+  job1:
+    defaults:
+      run:
+        shell: pwsh
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Blackjack script file
+        run: ./src/oppgave_10.ps1
+
+      - name: Login via Az module
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
